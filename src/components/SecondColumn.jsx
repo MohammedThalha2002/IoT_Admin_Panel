@@ -76,7 +76,7 @@ function SecondColumn() {
         </div>
         <div className="h-[25vh] w-[20vw] ml-[3%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 flex flex-col justify-center items-center ">
           <GaugeComponent
-          className="h-[20vh] w-[18vw]"
+            className="h-[20vh] w-[18vw]"
             arc={{
               subArcs: [
                 {
@@ -111,7 +111,12 @@ function SecondColumn() {
           <LineChart chartData={userData} />
         </div>
         <div className="h-[38vh] w-[17vw] ml-[3%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 ">
-          <h3 className="flex justify-center items-center">Front/Back</h3>
+          <h3 className="flex justify-center items-center font-semibold mt-2">
+            Position
+          </h3>
+          <div className="flex justify-center items-center h-full w-full">
+            <h1 className="font-bold mb-16 text-2xl">FRONT</h1>
+          </div>
         </div>
       </div>
     </div>
