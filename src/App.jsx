@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import "./App.css";
+import { useState } from "react";
 import "react-circular-progressbar/dist/styles.css";
 import FirstColumn from "./components/FirstColumn";
 import SecondColumn from "./components/SecondColumn";
 
 export default function App() {
-  // 1) fetch the data from the firebase
-  // 2) update the values in the dashboard
-
-  const [oilLevel, setOilLevel] = useState(20);
+  const [oilLevel, setOilLevel] = useState(0);
   const [rpm, setRpm] = useState(0);
   const [vibration, setVibration] = useState(0);
+  const [thermometer, setThermometer] = useState(0);
+  const [coolentLevel, setCoolentLevel] = useState(0);
+  const [friction, setFriction] = useState(0);
+  const [sound, setSound] = useState(0);
+  const [position, setPosition] = useState("FRONT");
 
   return (
     <>
@@ -23,7 +26,13 @@ export default function App() {
           <div className="h-[90vh] w-[1px] bg-[#b2beb5] ml-[8.9%]"></div>
           <FirstColumn oilLevel={oilLevel} rpm={rpm} vibration={vibration} />
           <div className="h-[90vh] w-[1px] ml-[2%] bg-[#b2beb5]"></div>
-          <SecondColumn />
+          <SecondColumn
+            thermometer={thermometer}
+            coolentLevel={coolentLevel}
+            friction={friction}
+            sound={sound}
+            position={position}
+          />
         </div>
       </div>
     </>

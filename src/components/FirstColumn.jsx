@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import BatteryGauge from "react-battery-gauge";
 import Progress from "react-circle-progress-bar";
 import "../App.css";
+function FirstColumn({oilLevel, rpm, vibration}) {
 
-function FirstColumn({ oilLevel, rpm, vibration }) {
+  
+
   return (
     <div className="flex-col">
       <div className="h-[20vh] w-[15vw] ml-[7%] mt-[5%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 flex flex-col justify-center items-center ">
