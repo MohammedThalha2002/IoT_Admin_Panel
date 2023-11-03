@@ -8,7 +8,13 @@ import "react-circular-progressbar/dist/styles.css";
 import LineChart from "./LineChart";
 import { UserData } from "./Data";
 
-function SecondColumn() {
+function SecondColumn({
+  thermometer,
+  coolentLevel,
+  friction,
+  sound,
+  position,
+}) {
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.year),
     datasets: [
@@ -33,7 +39,7 @@ function SecondColumn() {
         {" "}
         <Thermometer
           theme="light"
-          value="18"
+          value={thermometer}
           max="100"
           steps="4"
           format="°C"
@@ -48,7 +54,7 @@ function SecondColumn() {
             nrOfLevels={420}
             arcsLength={[0.3, 0.5, 0.2]}
             colors={["#5BE12C", "#F5CD19", "#EA4228"]}
-            percent={0.37}
+            percent={coolentLevel}
             arcPadding={0.02}
           />
           <h3 className="font-semibold">Coolent Level</h3>
@@ -70,7 +76,7 @@ function SecondColumn() {
               ],
             }}
             pointer={{ type: "blob", animationDelay: 0 }}
-            value={50}
+            value={friction}
           />
           <h3 className="font-semibold">Friction</h3>
         </div>
@@ -101,7 +107,7 @@ function SecondColumn() {
                 },
               ],
             }}
-            value={50}
+            value={sound}
           />
           <h3 className="font-semibold p-5">Sound</h3>
         </div>
@@ -115,7 +121,7 @@ function SecondColumn() {
             Position
           </h3>
           <div className="flex justify-center items-center h-full w-full">
-            <h1 className="font-bold mb-16 text-2xl">FRONT</h1>
+            <h1 className="font-bold mb-16 text-2xl">{position}</h1>
           </div>
         </div>
       </div>
