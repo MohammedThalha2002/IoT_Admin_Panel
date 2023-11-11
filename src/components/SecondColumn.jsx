@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import "../App.css";
 import GaugeComponent from "react-gauge-component";
@@ -15,12 +15,13 @@ function SecondColumn({
   sound,
   position,
 }) {
+
   const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.year),
+    labels: graphData.map((data) => data.Xaxis),
     datasets: [
       {
-        label: "Users Gained",
-        data: UserData.map((data) => data.userGain),
+        label: "Voltage",
+        data: graphData.map((data) => data.voltage),
         backgroundColor: [
           "rgba(75,192,192,1)",
           "#ecf0f1",
@@ -33,6 +34,7 @@ function SecondColumn({
       },
     ],
   });
+
   return (
     <div className="flex-col">
       <div className="thermometer ml-[33%] top-[-290px] drop-shadow-lg shadow-slate-600 absolute flex flex-col">
