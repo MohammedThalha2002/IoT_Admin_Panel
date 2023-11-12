@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import { useState } from "react";
 import "react-circular-progressbar/dist/styles.css";
 import FirstColumn from "./components/FirstColumn";
 import SecondColumn from "./components/SecondColumn";
+import { db } from "./firebase/config";
+import { onValue, ref, set } from "firebase/database";
+
 export default function App() {
   const [oilLevel, setOilLevel] = useState(0);
   const [rpm, setRpm] = useState(0);
@@ -15,6 +17,17 @@ export default function App() {
   const [voltage, setVoltage] = useState(0);
   const [current, setCurrent] = useState(0);
   const [position, setPosition] = useState("FRONT");
+
+  useEffect(() => {
+    const query = ref(db, "sensor-values");
+    return onValue(query, (snapshot) => {
+      if (snapshot.exists()) {
+        const val = snapshot.val();
+        console.log(val);
+        setRpm(val);
+      }
+    });
+  }, []);
 
   return (
     <>
