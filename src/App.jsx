@@ -12,6 +12,8 @@ export default function App() {
   const [coolentLevel, setCoolentLevel] = useState(0);
   const [friction, setFriction] = useState(0);
   const [sound, setSound] = useState(0);
+  const [voltage, setVoltage] = useState(0);
+  const [current, setCurrent] = useState(0);
   const [position, setPosition] = useState("FRONT");
 
   return (
@@ -31,6 +33,8 @@ export default function App() {
             friction={friction}
             sound={sound}
             position={position}
+            current={current}
+            voltage={voltage}
           />
         </div>
       </div>

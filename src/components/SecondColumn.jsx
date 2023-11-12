@@ -1,12 +1,10 @@
 import React from "react";
-import { useState } from "react";
 import "../App.css";
 import GaugeComponent from "react-gauge-component";
 import GaugeChart from "react-gauge-chart";
 import Thermometer from "react-thermometer-component";
 import "react-circular-progressbar/dist/styles.css";
-import LineChart from "./LineChart";
-import { UserData } from "./Data";
+import VI from "./VI";
 
 function SecondColumn({
   thermometer,
@@ -14,25 +12,9 @@ function SecondColumn({
   friction,
   sound,
   position,
+  current,
+  voltage,
 }) {
-  const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.year),
-    datasets: [
-      {
-        label: "Users Gained",
-        data: UserData.map((data) => data.userGain),
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
-        ],
-        borderColor: "black",
-        borderWidth: 2,
-      },
-    ],
-  });
   return (
     <div className="flex-col">
       <div className="thermometer ml-[33%] top-[-290px] drop-shadow-lg shadow-slate-600 absolute flex flex-col">
@@ -56,6 +38,7 @@ function SecondColumn({
             colors={["#5BE12C", "#F5CD19", "#EA4228"]}
             percent={coolentLevel}
             arcPadding={0.02}
+            textColor=""
           />
           <h3 className="font-semibold">Coolent Level</h3>
         </div>
@@ -77,6 +60,7 @@ function SecondColumn({
             }}
             pointer={{ type: "blob", animationDelay: 0 }}
             value={friction}
+            className="text-slate-950"
           />
           <h3 className="font-semibold">Friction</h3>
         </div>
@@ -114,8 +98,16 @@ function SecondColumn({
       </div>
       <div className="flex mt-[3%]">
         <div className="h-[38vh] w-[46vw] ml-[2.5%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 flex items-center justify-center ">
-          <LineChart chartData={userData} />
+          <div className="flex flex-col items-center justify-center">
+            <VI value={voltage} />
+            <h3 className="font-semibold p-5">Voltage</h3>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <VI value={current} />
+            <h3 className="font-semibold p-5 ">Current</h3>
+          </div>
         </div>
+
         <div className="h-[38vh] w-[17vw] ml-[3%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 ">
           <h3 className="flex justify-center items-center font-semibold mt-2">
             Position

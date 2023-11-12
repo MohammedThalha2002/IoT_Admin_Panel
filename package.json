@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@progress/kendo-drawing": "^1.18.1",
+    "@progress/kendo-react-gauges": "^6.1.0",
     "@tomickigrzegorz/react-circular-progress-bar": "^1.1.2",
     "@trendmicro/react-toggle-switch": "^0.5.7",
     "chart.js": "^4.4.0",
