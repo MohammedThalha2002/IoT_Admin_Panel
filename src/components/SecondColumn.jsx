@@ -99,11 +99,11 @@ function SecondColumn({
       <div className="flex mt-[3%]">
         <div className="h-[38vh] w-[46vw] ml-[2.5%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 flex items-center justify-center ">
           <div className="flex flex-col items-center justify-center">
-            <VI value={voltage} />
+            <VI value={voltage} unit="V" />
             <h3 className="font-semibold p-5">Voltage</h3>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <VI value={current} />
+            <VI value={current} unit="A" />
             <h3 className="font-semibold p-5 ">Current</h3>
           </div>
         </div>

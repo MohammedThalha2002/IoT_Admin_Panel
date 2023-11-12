@@ -1,7 +1,7 @@
 import React from "react";
 import GaugeComponent from "react-gauge-component";
 
-function VI({ value }) {
+function VI({ value, unit }) {
   return (
     <div>
       {
@@ -16,44 +16,24 @@ function VI({ value }) {
                 limit: 15,
                 color: "#EA4228",
                 showTick: true,
-                tooltip: {
-                  text: "Too low temperature!",
-                },
-                onClick: () => console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
-                onMouseMove: () =>
-                  console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"),
-                onMouseLeave: () =>
-                  console.log("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"),
               },
               {
                 limit: 17,
                 color: "#F5CD19",
                 showTick: true,
-                tooltip: {
-                  text: "Low temperature!",
-                },
               },
               {
                 limit: 28,
                 color: "#5BE12C",
                 showTick: true,
-                tooltip: {
-                  text: "OK temperature!",
-                },
               },
               {
                 limit: 30,
                 color: "#F5CD19",
                 showTick: true,
-                tooltip: {
-                  text: "High temperature!",
-                },
               },
               {
                 color: "#EA4228",
-                tooltip: {
-                  text: "Too high temperature!",
-                },
               },
             ],
           }}
@@ -64,7 +44,7 @@ function VI({ value }) {
             // elastic: true,
           }}
           labels={{
-            valueLabel: { formatTextValue: (value) => value },
+            valueLabel: { formatTextValue: (value) => value + unit },
             tickLabels: {
               type: "outer",
               valueConfig: {
