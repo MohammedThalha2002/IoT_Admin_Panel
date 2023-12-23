@@ -17,6 +17,7 @@ function SecondColumn({
 }) {
   return (
     <div className="flex-col">
+      <h3 className="z-100 ml-[33%] font-semibold pt-2">Temperature</h3>
       <div className="thermometer ml-[33%] top-[-290px] drop-shadow-lg shadow-slate-600 absolute flex flex-col">
         {" "}
         <Thermometer
@@ -40,7 +41,7 @@ function SecondColumn({
             arcPadding={0.02}
             textColor=""
           />
-          <h3 className="font-semibold">Coolent Level</h3>
+          <h3 className="font-semibold">Motor Temperature</h3>
         </div>
         <div className="h-[25vh] w-[20vw] ml-[3%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 flex flex-col justify-center items-center  ">
           <GaugeComponent
@@ -62,7 +63,7 @@ function SecondColumn({
             value={friction}
             className="text-slate-950"
           />
-          <h3 className="font-semibold">Friction</h3>
+          <h3 className="font-semibold">Torque</h3>
         </div>
         <div className="h-[25vh] w-[20vw] ml-[3%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 flex flex-col justify-center items-center ">
           <GaugeComponent
@@ -109,11 +110,21 @@ function SecondColumn({
         </div>
 
         <div className="h-[38vh] w-[17vw] ml-[3%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 ">
-          <h3 className="flex justify-center items-center font-semibold mt-2">
-            Position
-          </h3>
-          <div className="flex justify-center items-center h-full w-full">
-            <h1 className="font-bold mb-16 text-2xl">{position}</h1>
+          <div className="h-1/2 border border-b-0 rounded-md border-black">
+            <h3 className="flex justify-center items-center font-semibold mt-2">
+              Position
+            </h3>
+            <div className="flex justify-center items-center h-full w-full">
+              <h1 className="font-bold mb-16 text-2xl">{position}</h1>
+            </div>
+          </div>
+          <div className="h-1/2 border rounded-md border-black">
+            <h3 className="flex justify-center items-center font-semibold mt-2">
+              Belt Position
+            </h3>
+            <div className="flex justify-center items-center h-full w-full">
+              <h1 className="font-bold mb-16 text-2xl">{position}</h1>
+            </div>
           </div>
         </div>
       </div>
