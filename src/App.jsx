@@ -7,7 +7,7 @@ import { db } from "./firebase/config";
 import { onValue, ref, set } from "firebase/database";
 
 export default function App() {
-  const [oilLevel, setOilLevel] = useState(0);
+  const [oilViscosity, setOilViscosity] = useState(0);
   const [rpm, setRpm] = useState(0);
   const [vibration, setVibration] = useState(0);
   const [thermometer, setThermometer] = useState(0);
@@ -17,14 +17,40 @@ export default function App() {
   const [voltage, setVoltage] = useState(0);
   const [current, setCurrent] = useState(0);
   const [position, setPosition] = useState("FRONT");
+  const [beltPosition, setBeltPosition] = useState("REAR");
 
   useEffect(() => {
+    // const initialSensorValues = {
+    //   oilViscosity: 23,
+    //   rpm: 120,
+    //   vibration: 30,
+    //   thermometer: 34,
+    //   coolentLevel: 20,
+    //   friction: 12,
+    //   sound: 320,
+    //   voltage: 240,
+    //   current: 10,
+    //   position: "FRONT",
+    //   beltPosition: "REAR",
+    // };
+    // set(ref(db, "sensor-values"), initialSensorValues);
+    //
     const query = ref(db, "sensor-values");
     return onValue(query, (snapshot) => {
       if (snapshot.exists()) {
-        const val = snapshot.val();
-        console.log(val);
-        setRpm(val);
+        const res = snapshot.val();
+        // console.log(res);
+        setOilViscosity(res.oilViscosity);
+        setRpm(res.rpm);
+        setVibration(res.vibration);
+        setThermometer(res.thermometer);
+        setCoolentLevel(res.coolentLevel);
+        setFriction(res.friction);
+        setSound(res.sound);
+        setVoltage(res.voltage);
+        setCurrent(res.current);
+        setPosition(res.position);
+        setBeltPosition(res.beltPosition);
       }
     });
   }, []);
@@ -38,7 +64,11 @@ export default function App() {
          rounded-lg shadow-slate-600 shadow-2xl flex"
         >
           <div className="h-[90vh] w-[1px] bg-[#b2beb5] ml-[8.9%]"></div>
-          <FirstColumn oilLevel={oilLevel} rpm={rpm} vibration={vibration} />
+          <FirstColumn
+            oilViscosity={oilViscosity}
+            rpm={rpm}
+            vibration={vibration}
+          />
           <div className="h-[90vh] w-[1px] ml-[2%] bg-[#b2beb5]"></div>
           <SecondColumn
             thermometer={thermometer}
@@ -48,6 +78,7 @@ export default function App() {
             position={position}
             current={current}
             voltage={voltage}
+            beltPosition={beltPosition}
           />
         </div>
       </div>

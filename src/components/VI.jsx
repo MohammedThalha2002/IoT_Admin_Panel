@@ -55,8 +55,6 @@ function VI({ value, unit }) {
             },
           }}
           value={value}
-          minValue={10}
-          maxValue={35}
         />
       }
     </div>

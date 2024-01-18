@@ -14,10 +14,13 @@ function SecondColumn({
   position,
   current,
   voltage,
+  beltPosition,
 }) {
   return (
     <div className="flex-col">
-      <h3 className="z-100 ml-[33%] font-semibold pt-2">Temperature</h3>
+      <h3 className="z-100 ml-[33%] font-semibold pt-2">
+        Temperature <span className="text-xs">(°C)</span>
+      </h3>
       <div className="thermometer ml-[33%] top-[-290px] drop-shadow-lg shadow-slate-600 absolute flex flex-col">
         {" "}
         <Thermometer
@@ -37,62 +40,36 @@ function SecondColumn({
             nrOfLevels={420}
             arcsLength={[0.3, 0.5, 0.2]}
             colors={["#5BE12C", "#F5CD19", "#EA4228"]}
-            percent={coolentLevel}
+            percent={coolentLevel / 100}
+            formatTextValue={(val) => val + "°C"}
             arcPadding={0.02}
             textColor=""
           />
           <h3 className="font-semibold">Motor Temperature</h3>
         </div>
         <div className="h-[25vh] w-[20vw] ml-[3%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 flex flex-col justify-center items-center  ">
-          <GaugeComponent
-            type="semicircle"
-            arc={{
-              colorArray: ["#00FF15", "#FF2121"],
-              padding: 0.02,
-              subArcs: [
-                { limit: 40 },
-                { limit: 60 },
-                { limit: 70 },
-                {},
-                {},
-                {},
-                {},
-              ],
-            }}
-            pointer={{ type: "blob", animationDelay: 0 }}
-            value={friction}
-            className="text-slate-950"
+          <GaugeChart
+            id="gauge-chart5"
+            nrOfLevels={420}
+            arcsLength={[0.3, 0.5, 0.2]}
+            colors={["#5BE12C", "#F5CD19", "#EA4228"]}
+            percent={friction / 100}
+            formatTextValue={(val) => val + "Nm"}
+            arcPadding={0.02}
+            textColor=""
           />
           <h3 className="font-semibold">Torque</h3>
         </div>
         <div className="h-[25vh] w-[20vw] ml-[3%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 flex flex-col justify-center items-center ">
-          <GaugeComponent
-            className="h-[20vh] w-[18vw]"
-            arc={{
-              subArcs: [
-                {
-                  limit: 20,
-                  color: "#EA4228",
-                  showTick: true,
-                },
-                {
-                  limit: 40,
-                  color: "#F58B19",
-                  showTick: true,
-                },
-                {
-                  limit: 60,
-                  color: "#F5CD19",
-                  showTick: true,
-                },
-                {
-                  limit: 100,
-                  color: "#5BE12C",
-                  showTick: true,
-                },
-              ],
-            }}
-            value={sound}
+          <GaugeChart
+            id="gauge-chart5"
+            nrOfLevels={520}
+            arcsLength={[0.3, 0.5, 0.2]}
+            colors={["#5BE12C", "#F5CD19", "#EA4228"]}
+            percent={sound / 100}
+            formatTextValue={(val) => val + "db"}
+            arcPadding={0.02}
+            textColor=""
           />
           <h3 className="font-semibold p-5">Sound</h3>
         </div>
@@ -101,11 +78,15 @@ function SecondColumn({
         <div className="h-[38vh] w-[46vw] ml-[2.5%] bg-[#f6f6f6] rounded-md drop-shadow-lg shadow-slate-600 flex items-center justify-center ">
           <div className="flex flex-col items-center justify-center">
             <VI value={voltage} unit="V" />
-            <h3 className="font-semibold p-5">Voltage</h3>
+            <h3 className="font-semibold p-5">
+              Voltage <span className="text-xs">(V)</span>
+            </h3>
           </div>
           <div className="flex flex-col items-center justify-center">
             <VI value={current} unit="A" />
-            <h3 className="font-semibold p-5 ">Current</h3>
+            <h3 className="font-semibold p-5 ">
+              Current <span className="text-xs">(A)</span>
+            </h3>
           </div>
         </div>
 
@@ -123,7 +104,7 @@ function SecondColumn({
               Belt Position
             </h3>
             <div className="flex justify-center items-center h-full w-full">
-              <h1 className="font-bold mb-16 text-2xl">{position}</h1>
+              <h1 className="font-bold mb-16 text-2xl">{beltPosition}</h1>
             </div>
           </div>
         </div>
